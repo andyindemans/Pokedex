@@ -8,4 +8,6 @@
     <color name="black">#FF000000</color>
     <color name="white">#FFFFFFFF</color>
     <color name="pokemon_list_number">#919698</color>
+    <color name="opaque_grey">#88c5c9c6</color>
+    <color name="opaque_black">#88000000</color>
 </resources>

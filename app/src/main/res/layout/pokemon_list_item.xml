@@ -20,7 +20,7 @@
             android:layout_marginTop="10dp"
             android:layout_marginBottom="10dp"
             android:layout_marginStart="14dp"
-            android:src="@drawable/ic_launcher_foreground"/>
+            android:src="@drawable/favorites_gradient"/>
 
         <LinearLayout
             android:layout_width="wrap_content"
@@ -36,7 +36,7 @@
                 android:layout_height="wrap_content"
                 android:textSize="17sp"
                 android:textStyle="bold"
-                android:text="Naam"/>
+                android:text="@string/naam"/>
 
             <TextView
                 android:id="@+id/pokemon_list_number_text"
