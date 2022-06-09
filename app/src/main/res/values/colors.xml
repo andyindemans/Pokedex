@@ -10,4 +10,5 @@
     <color name="pokemon_list_number">#919698</color>
     <color name="opaque_grey">#88c5c9c6</color>
     <color name="opaque_black">#88000000</color>
+    <color name="info_grey">#ACB2C1</color>
 </resources>

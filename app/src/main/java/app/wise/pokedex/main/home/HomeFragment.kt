@@ -45,7 +45,6 @@ class HomeFragment : Fragment() {
             requireActivity().getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container, DetailFragment(pokemon)).commit()
         }
 
-        viewModel.getPokemonList()
         viewModel.pokemonList.observe(viewLifecycleOwner, Observer { list -> (pokemonListRecyclerView.adapter as PokemonListAdapter).setData(list) })
     }
 
