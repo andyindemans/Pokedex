@@ -28,21 +28,14 @@ class PokemonRepository() {
                 Log.e("Error", "OOPS!! something went wrong..")
             }
 
-            override fun onResponse(
-                call: Call<List<Pokemon>>?,
-                response: Response<List<Pokemon>>?
-            ) {
+            override fun onResponse(call: Call<List<Pokemon>>, response: Response<List<Pokemon>>) {
 
-                if (response != null) {
-                    when (response.code()) {
-                        200 -> {
-                            Thread(Runnable {
+                if (response.code() == 200) {
+                        Thread {
 
-                                pokemonDao.insert(response.body()!!)
+                            pokemonDao.insert(response.body()!!)
 
-                            }).start()
-                        }
-                    }
+                        }.start()
                 }
             }
         })
@@ -57,21 +50,37 @@ class PokemonRepository() {
                     Log.e("Error", "OOPS!! something went wrong..")
                 }
 
-                override fun onResponse(call: Call<Pokemon>?, response: Response<Pokemon>?) {
+                override fun onResponse(call: Call<Pokemon>, response: Response<Pokemon>) {
 
-                    if (response != null) {
-                        when (response.code()) {
-                            200 -> {
-                                Thread(Runnable {
+                    if (response.code() == 200) {
+                            Thread {
 
-                                    pokemonDao.updatePokemonDetails(response.body()!!)
+                                response.body()?.let { pokemonDao.updatePokemonDetails(it.id, it.height!!, it.moves!!, it.stats!!, it.types!!, it.weight!!) }
 
-                                }).start()
-                            }
+                            }.start()
                         }
-                    }
                 }
             })
+    }
+
+    fun setFavoriteStatus(id: Int, favorite: Boolean) {
+        Thread {
+            pokemonDao.setFavoriteStatus(id, favorite)
+        }.start()
+    }
+
+    fun setTeamStatus(id: Int, team: Boolean) {
+        Thread {
+            pokemonDao.setTeamStatus(id, team)
+        }.start()
+    }
+
+    fun getFavoritePokemons(): LiveData<List<Pokemon>> {
+        return pokemonDao.getFavoritePokemons()
+    }
+
+    fun getTeam(): LiveData<List<Pokemon>> {
+        return pokemonDao.getTeam()
     }
 
 

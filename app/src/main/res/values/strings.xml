@@ -25,4 +25,9 @@
     <string name="total">Total</string>
     <string name="_90">90</string>
     <string name="_00">00</string>
+    <string name="toevoegen_aan_mijn_team">Toevoegen aan mijn team</string>
+    <string name="verwijder_uit_team">Verwijder uit mijn team</string>
+    <string name="number_format">%03d</string>
+    <string name="weight_format">%s kg</string>
+    <string name="height_format">%sm</string>
 </resources>

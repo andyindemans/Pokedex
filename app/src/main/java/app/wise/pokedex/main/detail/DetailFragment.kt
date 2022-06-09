@@ -6,6 +6,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.viewModels
+import app.wise.pokedex.R
 import app.wise.pokedex.databinding.FragmentDetailBinding
 import app.wise.pokedex.main.MainActivity
 import com.bumptech.glide.Glide
@@ -24,9 +25,20 @@ class DetailFragment(private val pokemonId: Int) : Fragment() {
 
         val activity = requireActivity() as MainActivity
 
-        binding.detailBackButton.setOnClickListener{
+        binding.favoriteButton.setOnClickListener {
+            viewModel.favoriteButtonClick()
+        }
+
+        binding.addToTeamButton.setOnClickListener {
+            viewModel.teamButtonClick()
+        }
+
+        binding.toolbar.setNavigationIcon(R.drawable.ic_chevron_left)
+
+        binding.toolbar.setNavigationOnClickListener{
             activity.onBackPressed()
         }
+
 
         return binding.root
     }

@@ -1,7 +1,6 @@
 package app.wise.pokedex.main.detail
 
 import androidx.lifecycle.*
-import app.wise.pokedex.data.models.Pokemon
 import app.wise.pokedex.data.repository.PokemonRepository
 
 class DetailViewModel(val pokemonId: Int) : ViewModel() {
@@ -12,11 +11,18 @@ class DetailViewModel(val pokemonId: Int) : ViewModel() {
         repository.fetchPokemonDetails(pokemonId)
     }
 
-
-    fun getPokeDetails(): Pokemon? {
-        val id = pokemonId
-        return repository.getPokemonDetails(id).value
+    fun favoriteButtonClick() {
+        if (pokemon.value != null) {
+            repository.setFavoriteStatus(pokemonId, !pokemon.value!!.favorite)
+        }
     }
+
+    fun teamButtonClick() {
+        if (pokemon.value != null) {
+            repository.setTeamStatus(pokemonId, !pokemon.value!!.team)
+        }
+    }
+
 }
 
 class DetailViewModelFactory(val id: Int) :
