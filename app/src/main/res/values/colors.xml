@@ -11,4 +11,6 @@
     <color name="opaque_grey">#88c5c9c6</color>
     <color name="opaque_black">#88000000</color>
     <color name="info_grey">#ACB2C1</color>
+    <color name="stat_bar_red">#DF6563</color>
+    <color name="stat_bar_green">#70C18F</color>
 </resources>

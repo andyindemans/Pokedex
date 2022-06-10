@@ -193,7 +193,7 @@
                                 android:layout_height="wrap_content"
                                 android:layout_marginStart="20dp"
                                 android:layout_marginTop="15dp"
-                                android:text="@{@string/weight_format(vm.pokemon.weight)}"
+                                android:text="@{String.format(&quot;%.1f kg&quot;, Float.valueOf(vm.pokemon.weight)/10.0f)}"
                                 android:textSize="15sp" />
 
                             <TextView
@@ -202,7 +202,7 @@
                                 android:layout_height="wrap_content"
                                 android:layout_marginStart="20dp"
                                 android:layout_marginTop="15dp"
-                                android:text="@{@string/height_format(vm.pokemon.height)}"
+                                android:text="@{String.format(&quot;%.1fm&quot;, Float.valueOf(vm.pokemon.height)/10.0f)}"
                                 android:textSize="15sp" />
 
                             <TextView
@@ -211,7 +211,7 @@
                                 android:layout_height="wrap_content"
                                 android:layout_marginStart="20dp"
                                 android:layout_marginTop="15dp"
-                                android:layout_marginBottom="15dp"
+                                android:layout_marginBottom="20dp"
                                 android:text="@{vm.pokemon.abilities[0].ability.name}"
                                 android:textSize="15sp" />
                         </LinearLayout>
@@ -377,6 +377,7 @@
                                 android:layout_marginStart="15dp"
                                 android:layout_marginTop="17dp"
                                 android:layout_marginEnd="19dp"
+                                android:progressTint="@{vm.pokemon.stats[0].base_stat &lt; 50 ? @color/stat_bar_red : @color/stat_bar_green}"
                                 android:progress="@{vm.pokemon.stats[0].base_stat}"/>
 
                             <ProgressBar
@@ -387,6 +388,7 @@
                                 android:layout_marginStart="15dp"
                                 android:layout_marginTop="20dp"
                                 android:layout_marginEnd="19dp"
+                                android:progressTint="@{vm.pokemon.stats[1].base_stat &lt; 50 ? @color/stat_bar_red : @color/stat_bar_green}"
                                 android:progress="@{vm.pokemon.stats[1].base_stat}"/>
 
                             <ProgressBar
@@ -397,6 +399,7 @@
                                 android:layout_marginStart="15dp"
                                 android:layout_marginTop="20dp"
                                 android:layout_marginEnd="19dp"
+                                android:progressTint="@{vm.pokemon.stats[2].base_stat &lt; 50 ? @color/stat_bar_red : @color/stat_bar_green}"
                                 android:progress="@{vm.pokemon.stats[2].base_stat}"/>
 
                             <ProgressBar
@@ -407,6 +410,7 @@
                                 android:layout_marginStart="15dp"
                                 android:layout_marginTop="20dp"
                                 android:layout_marginEnd="19dp"
+                                android:progressTint="@{vm.pokemon.stats[3].base_stat &lt; 50 ? @color/stat_bar_red : @color/stat_bar_green}"
                                 android:progress="@{vm.pokemon.stats[3].base_stat}"/>
 
                             <ProgressBar
@@ -417,6 +421,7 @@
                                 android:layout_marginStart="15dp"
                                 android:layout_marginTop="20dp"
                                 android:layout_marginEnd="19dp"
+                                android:progressTint="@{vm.pokemon.stats[4].base_stat &lt; 50 ? @color/stat_bar_red : @color/stat_bar_green}"
                                 android:progress="@{vm.pokemon.stats[4].base_stat}"/>
 
                             <ProgressBar
@@ -426,11 +431,153 @@
                                 android:layout_height="wrap_content"
                                 android:layout_marginStart="15dp"
                                 android:layout_marginTop="20dp"
+                                android:layout_marginBottom="20dp"
                                 android:layout_marginEnd="19dp"
+                                android:progressTint="@{vm.pokemon.stats[5].base_stat &lt; 50 ? @color/stat_bar_red : @color/stat_bar_green}"
                                 android:progress="@{vm.pokemon.stats[5].base_stat}"/>
 
                         </LinearLayout>
                     </LinearLayout>
+                </androidx.cardview.widget.CardView>
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="16dp"
+                    android:layout_marginTop="40dp"
+                    android:layout_marginBottom="7dp"
+                    android:text="@string/moveset"
+                    android:textColor="@color/white"
+                    android:textSize="12sp"
+                    android:textStyle="bold" />
+
+                <androidx.cardview.widget.CardView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="16dp"
+                    android:layout_marginEnd="16dp"
+                    app:cardCornerRadius="10dp">
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal">
+
+                        <LinearLayout
+                            android:layout_width="0dp"
+                            android:layout_weight="0.5"
+                            android:layout_height="wrap_content"
+                            android:orientation="vertical">
+
+                            <LinearLayout
+                                android:layout_width="match_parent"
+                                android:layout_height="match_parent"
+                                android:orientation="horizontal">
+
+                                <TextView
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:layout_marginStart="20dp"
+                                    android:layout_marginTop="15dp"
+                                    android:text="@{@string/move_level(vm.pokemon.moves[0].version_group_details[0].level_learned_at)}"
+                                    android:textColor="@color/info_grey"
+                                    android:textSize="15sp" />
+
+                                <TextView
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:layout_marginStart="20dp"
+                                    android:layout_marginTop="15dp"
+                                    android:text="@{vm.pokemon.moves[0].move.name}"
+                                    android:textColor="@color/info_grey"
+                                    android:textSize="15sp" />
+                            </LinearLayout>
+
+                            <LinearLayout
+                                android:layout_width="match_parent"
+                                android:layout_height="match_parent"
+                                android:orientation="horizontal">
+
+                                <TextView
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:layout_marginStart="20dp"
+                                    android:layout_marginTop="15dp"
+                                    android:text="@{@string/move_level(vm.pokemon.moves[1].version_group_details[1].level_learned_at)}"
+                                    android:textColor="@color/info_grey"
+                                    android:textSize="15sp" />
+
+                                <TextView
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:layout_marginStart="20dp"
+                                    android:layout_marginTop="15dp"
+                                    android:layout_marginBottom="20dp"
+                                    android:text="@{vm.pokemon.moves[1].move.name}"
+                                    android:textColor="@color/info_grey"
+                                    android:textSize="15sp" />
+                            </LinearLayout>
+
+                        </LinearLayout>
+
+                        <LinearLayout
+                            android:layout_width="0dp"
+                            android:layout_weight="0.5"
+                            android:layout_height="wrap_content"
+                            android:orientation="vertical">
+
+                            <LinearLayout
+                                android:layout_width="match_parent"
+                                android:layout_height="match_parent"
+                                android:orientation="horizontal">
+
+                                <TextView
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:layout_marginStart="20dp"
+                                    android:layout_marginTop="15dp"
+                                    android:text="@{@string/move_level(vm.pokemon.moves[2].version_group_details[2].level_learned_at)}"
+                                    android:textColor="@color/info_grey"
+                                    android:textSize="15sp" />
+
+                                <TextView
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:layout_marginStart="20dp"
+                                    android:layout_marginTop="15dp"
+                                    android:text="@{vm.pokemon.moves[2].move.name}"
+                                    android:textColor="@color/info_grey"
+                                    android:textSize="15sp" />
+                            </LinearLayout>
+
+                            <LinearLayout
+                                android:layout_width="match_parent"
+                                android:layout_height="match_parent"
+                                android:orientation="horizontal">
+
+                                <TextView
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:layout_marginStart="20dp"
+                                    android:layout_marginTop="15dp"
+                                    android:text="@{@string/move_level(vm.pokemon.moves[3].version_group_details[3].level_learned_at)}"
+                                    android:textColor="@color/info_grey"
+                                    android:textSize="15sp" />
+
+                                <TextView
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:layout_marginStart="20dp"
+                                    android:layout_marginTop="15dp"
+                                    android:layout_marginBottom="20dp"
+                                    android:text="@{vm.pokemon.moves[3].move.name}"
+                                    android:textColor="@color/info_grey"
+                                    android:textSize="15sp" />
+                            </LinearLayout>
+
+                        </LinearLayout>
+                    </LinearLayout>
+
                 </androidx.cardview.widget.CardView>
 
             </LinearLayout>

@@ -28,6 +28,7 @@
     <string name="toevoegen_aan_mijn_team">Toevoegen aan mijn team</string>
     <string name="verwijder_uit_team">Verwijder uit mijn team</string>
     <string name="number_format">%03d</string>
-    <string name="weight_format">%s kg</string>
-    <string name="height_format">%sm</string>
+    <string name="moveset">Moveset</string>
+    <string name="move_level">Level %s</string>
+    <string name="count_tag">%s Pokemons</string>
 </resources>

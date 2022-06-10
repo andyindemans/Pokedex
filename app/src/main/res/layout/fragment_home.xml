@@ -14,6 +14,7 @@
         tools:context=".main.home.HomeFragment">
 
         <SearchView
+            android:id="@+id/search"
             android:layout_marginTop="14dp"
             android:layout_marginLeft="16dp"
             android:layout_marginRight="16dp"
@@ -66,7 +67,7 @@
                         android:layout_height="wrap_content"
                         app:layout_constraintBottom_toBottomOf="parent"
                         app:layout_constraintLeft_toLeftOf="parent"
-                        android:text="@string/pokemons"
+                        android:text="@{@string/count_tag(vm.teamCount)}"
                         android:textSize="15sp"
                         android:layout_marginStart="15dp"
                         android:layout_marginBottom="10dp"
@@ -114,7 +115,7 @@
                         android:layout_height="wrap_content"
                         app:layout_constraintBottom_toBottomOf="parent"
                         app:layout_constraintLeft_toLeftOf="parent"
-                        android:text="@string/pokemons"
+                        android:text="@{@string/count_tag(vm.favoriteCount)}"
                         android:textSize="15sp"
                         android:layout_marginStart="15dp"
                         android:layout_marginBottom="10dp"

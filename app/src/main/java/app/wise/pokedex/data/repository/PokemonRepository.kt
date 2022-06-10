@@ -55,7 +55,7 @@ class PokemonRepository() {
                     if (response.code() == 200) {
                             Thread {
 
-                                response.body()?.let { pokemonDao.updatePokemonDetails(it.id, it.height!!, it.moves!!, it.stats!!, it.types!!, it.weight!!) }
+                                response.body()?.let { pokemonDao.updatePokemonDetails(it.id, it.height!!, it.moves!!, it.stats!!, it.types!!, it.weight!!, it.abilities!!) }
 
                             }.start()
                         }
@@ -83,5 +83,16 @@ class PokemonRepository() {
         return pokemonDao.getTeam()
     }
 
+    fun getFavoritesCount(): LiveData<Int> {
+        return pokemonDao.getFavoriteCount()
+    }
+
+    fun getTeamCount(): LiveData<Int> {
+        return pokemonDao.getTeamCount()
+    }
+
+    fun getPokemonBySearch(name: String): LiveData<List<Pokemon>> {
+        return pokemonDao.getAllPokemonBySearch(name)
+    }
 
 }

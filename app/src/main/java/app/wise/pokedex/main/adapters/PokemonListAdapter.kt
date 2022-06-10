@@ -6,6 +6,7 @@ import androidx.recyclerview.widget.RecyclerView
 import app.wise.pokedex.data.models.Pokemon
 import app.wise.pokedex.databinding.PokemonListItemBinding
 import com.bumptech.glide.Glide
+import java.util.logging.Filter
 
 class PokemonListAdapter(val pokemonClick: (Int) -> Unit) :
     RecyclerView.Adapter<PokemonListAdapter.PokeViewHolder>() {
