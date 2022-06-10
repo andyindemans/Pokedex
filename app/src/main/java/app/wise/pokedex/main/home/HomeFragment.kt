@@ -18,16 +18,20 @@ import app.wise.pokedex.main.team.TeamFragment
 class HomeFragment : Fragment() {
     private lateinit var binding: FragmentHomeBinding
     private val viewModel: HomeViewModel by viewModels()
-    private lateinit var pokemonListRecyclerView : RecyclerView
+    private lateinit var pokemonListRecyclerView: RecyclerView
 
-    override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View {
+    override fun onCreateView(
+        inflater: LayoutInflater,
+        container: ViewGroup?,
+        savedInstanceState: Bundle?
+    ): View {
         binding = FragmentHomeBinding.inflate(inflater, container, false)
         binding.lifecycleOwner = viewLifecycleOwner
         binding.vm = viewModel
 
         val activity = requireActivity() as MainActivity
 
-        binding.favoritesCard.setOnClickListener{activity.loadFragment(FavoritesFragment())}
+        binding.favoritesCard.setOnClickListener { activity.loadFragment(FavoritesFragment()) }
         binding.myTeamCard.setOnClickListener { activity.loadFragment(TeamFragment()) }
 
         return binding.root
@@ -38,15 +42,16 @@ class HomeFragment : Fragment() {
 
         pokemonListRecyclerView = view.findViewById(R.id.pokemon_list)
         pokemonListRecyclerView.layoutManager = LinearLayoutManager(context)
-        pokemonListRecyclerView.adapter = PokemonListAdapter{
+        pokemonListRecyclerView.adapter = PokemonListAdapter {
             val pokemon = it
-            requireActivity().getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container, DetailFragment(pokemon)).commit()
+            requireActivity().getSupportFragmentManager().beginTransaction()
+                .replace(R.id.fragment_container, DetailFragment(pokemon)).commit()
         }
 
-        viewModel.pokemonList.observe(viewLifecycleOwner, Observer { list -> (pokemonListRecyclerView.adapter as PokemonListAdapter).setData(list) })
+        viewModel.pokemonList.observe(
+            viewLifecycleOwner,
+            Observer { list -> (pokemonListRecyclerView.adapter as PokemonListAdapter).setData(list) })
     }
-
-
 
 
 }

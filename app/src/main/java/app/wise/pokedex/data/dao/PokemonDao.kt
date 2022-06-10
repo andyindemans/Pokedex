@@ -12,8 +12,8 @@ interface PokemonDao {
     @Insert(onConflict = OnConflictStrategy.IGNORE)
     fun insert(pokemonList: List<Pokemon>)
 
-    @Query("UPDATE pokemon SET height=:height, moves=:moves, stats=:stats, types=:types, weight=:weight, abilities=:abilities WHERE id=:id")
-    fun updatePokemonDetails(id: Int, height: Int, moves: List<Move>, stats: List<Stat>, types: List<Type>, weight: Int, abilities: List<Ability>)
+    @Query("UPDATE pokemon SET height=:height, moves=:moves, stats=:stats, weight=:weight, abilities=:abilities WHERE id=:id")
+    fun updatePokemonDetails(id: Int, height: Int, moves: List<Move>, stats: List<Stat>, weight: Int, abilities: List<Ability>)
 
     @Query("SELECT * FROM pokemon")
     fun getAllPokemon(): LiveData<List<Pokemon>>
@@ -39,6 +39,6 @@ interface PokemonDao {
     @Query("SELECT COUNT(id) FROM pokemon WHERE team")
     fun getTeamCount(): LiveData<Int>
 
-    @Query("SELECT * FROM pokemon where name LIKE  :name or LOWER(name) like LOWER(:name) order by id")
+    @Query("SELECT * FROM pokemon where name LIKE  '%' || :name || '%'  or LOWER(name) like LOWER(:name) order by id")
     fun getAllPokemonBySearch(name: String): LiveData<List<Pokemon>>
 }

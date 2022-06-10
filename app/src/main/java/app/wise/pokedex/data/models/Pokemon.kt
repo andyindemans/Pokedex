@@ -13,7 +13,7 @@ data class Pokemon(
     val name: String?,
     val sprites: Sprites?,
     val stats: List<Stat>?,
-    val types: List<Type>?,
+    val types: List<Type>,
     val weight: Int?,
     val favorite: Boolean = false,
     val team: Boolean = false

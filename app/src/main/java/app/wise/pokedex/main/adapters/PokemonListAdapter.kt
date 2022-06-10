@@ -6,7 +6,6 @@ import androidx.recyclerview.widget.RecyclerView
 import app.wise.pokedex.data.models.Pokemon
 import app.wise.pokedex.databinding.PokemonListItemBinding
 import com.bumptech.glide.Glide
-import java.util.logging.Filter
 
 class PokemonListAdapter(val pokemonClick: (Int) -> Unit) :
     RecyclerView.Adapter<PokemonListAdapter.PokeViewHolder>() {
@@ -45,6 +44,10 @@ class PokemonListAdapter(val pokemonClick: (Int) -> Unit) :
             pokemonListItemBinding.pokemonListNameText.text = pokemon.name
             pokemonListItemBinding.pokemonListNumberText.text =
                 "Nr. " + (pokemon.id).toString().padStart(3, '0')
+            pokemonListItemBinding.pokemonType1Text.text = pokemon.types[0].type.name
+            if (pokemon.types.size > 1) {
+                pokemonListItemBinding.pokemonType2Text.text = pokemon.types[1].type.name
+            }
             Glide.with(pokemonListItemBinding.root).load(pokemon.sprites?.front_default)
                 .into(pokemonListItemBinding.pokemonListImage)
         }

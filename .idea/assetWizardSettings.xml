@@ -28,9 +28,10 @@
                         </option>
                         <option name="values">
                           <map>
+                            <entry key="assetSourceType" value="FILE" />
                             <entry key="color" value="ffffff" />
-                            <entry key="outputName" value="ic_added_to_favorite" />
-                            <entry key="sourceFile" value="C:\Users\andyi\Desktop\Vector.svg" />
+                            <entry key="outputName" value="ic_magnifying_glass" />
+                            <entry key="sourceFile" value="C:\Users\andyi\Desktop\magnifyingglass.svg" />
                           </map>
                         </option>
                       </PersistentState>

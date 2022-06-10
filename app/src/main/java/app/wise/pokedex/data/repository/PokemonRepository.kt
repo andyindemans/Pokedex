@@ -55,7 +55,7 @@ class PokemonRepository() {
                     if (response.code() == 200) {
                             Thread {
 
-                                response.body()?.let { pokemonDao.updatePokemonDetails(it.id, it.height!!, it.moves!!, it.stats!!, it.types!!, it.weight!!, it.abilities!!) }
+                                response.body()?.let { pokemonDao.updatePokemonDetails(it.id, it.height!!, it.moves!!, it.stats!!, it.weight!!, it.abilities!!) }
 
                             }.start()
                         }
